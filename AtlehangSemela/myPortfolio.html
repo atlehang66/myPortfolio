@@ -1,0 +1,83 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Two Column Layout</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+
+    
+</head>
+<body>
+
+    <div class="container">
+        
+        <div class="left-column">
+            <div class="inner-left">
+                <center>
+                   <a href="myPortfolio.html">  <img src="icons/user-profile-icon-free-vector.jpg" alt="" style="border-radius: 100%; height: 70%;"></a>
+                </center>
+            </div>
+            <div class="bottom-left">
+                <center>
+                    <nav>
+                        <ul>
+                            <li><button onclick="myFrame('about.html')">About</button</li>
+                            <li><button onclick="myFrame('3.html')">Projects</button</li>
+                            <li><button onclick="myFrame('2.html')">Contact</button></li>
+                        </ul>
+                    </nav>
+                </center>
+                
+            </div>
+            <center>
+                <p>Switch to Dark Mode</p>
+
+                <label class="switch">
+                  <input type="checkbox" checked>
+                  <span class="slider round"></span>
+                </label>
+                
+            </center>
+        </div>
+        <div class="right-column">
+            <div class="inner-right">
+                <br>
+                <br>
+                <center>
+                    <p class="highlight">Hi there! I'm Atlehang Semela</p>
+                        <div class="btn">
+                            <input type="button"onclick="myFrame('2.html')" value="Lets Connect">
+                            <input type="button"onclick="myFrame('Atlehang Semela cv2.pdf')" value="Download CV">
+                        </div>
+                    
+                </center>
+           
+            </div>
+            <!--Contaion from w3-->
+            <div class="bottom-right">
+                <!--mySlides from w3-->
+                <!--video controls="Moonwalk - Stick Animation using Pencil (1).mp4"></video-->
+                <div style="width: 100%; max-width: 900px; margin: auto; border: 10px solid #333; border-radius: 10px; box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); position: relative;">
+                    <div style="height: 30px; background: #444;  display: flex; align-items: center; padding: 0 10px;">
+                        <div style="width: 15px; height: 15px; background: red; border-radius: 50%; margin-right: 5px; cursor: pointer;"></div>
+                        <div style="width: 15px; height: 15px; background: yellow; border-radius: 50%; margin-right: 5px; cursor: pointer;"></div>
+                        <div style="width: 15px; height: 15px; background: green; border-radius: 50%; cursor: pointer;"></div>
+                    </div>
+                    <iframe id="myFrame" src="" style="width: 100%; height: 460px; border: none; border-radius: 0; background-color: #f0f0f0;">
+                    </iframe>
+                </div>
+                
+                
+            </div>
+        </div>
+    </div>
+<script>
+    function myFrame(file){
+        document.getElementById('myFrame').src = file;
+    };
+</script>
+</body>
+</html> 
+

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Two Column Layout</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
 
     
@@ -16,16 +16,20 @@
         <div class="left-column">
             <div class="inner-left">
                 <center>
-                   <a href="myPortfolio.html">  <img src="icons/user-profile-icon-free-vector.jpg" alt="" style="border-radius: 100%; height: 70%;"></a>
+                    <a href="javascript:void(0);" onclick="myFrame('contact.html')">
+                        <img src="icons/user-profile-icon-free-vector.jpg" alt="User Profile Icon">
+                    </a>
+                    
+                    
                 </center>
             </div>
-            <div class="bottom-left">
+            <div class="bottom-left" style="margin: auto;">
                 <center>
                     <nav>
-                        <ul>
-                            <li><button onclick="myFrame('about.html')">About</button</li>
-                            <li><button onclick="myFrame('3.html')">Projects</button</li>
-                            <li><button onclick="myFrame('2.html')">Contact</button></li>
+                        <ul style="margin-left: -40px;">
+                            <li><button onclick="myFrame('about.html')">About</button></li>
+                            <li><button onclick="myFrame('project.html')">Projects</button></li>
+                            <li><button onclick="myFrame('contact.html')">Contacts</button></li>
                         </ul>
                     </nav>
                 </center>
@@ -48,7 +52,7 @@
                 <center>
                     <p class="highlight">Hi there! I'm Atlehang Semela</p>
                         <div class="btn">
-                            <input type="button"onclick="myFrame('2.html')" value="Lets Connect">
+                            <input type="button"onclick="myFrame('contactForm.html')" value="Lets Connect">
                             <input type="button"onclick="myFrame('Atlehang Semela cv2.pdf')" value="Download CV">
                         </div>
                     
@@ -58,14 +62,15 @@
             <!--Contaion from w3-->
             <div class="bottom-right">
                 <!--mySlides from w3-->
-                <!--video controls="Moonwalk - Stick Animation using Pencil (1).mp4"></video-->
-                <div style="width: 100%; max-width: 900px; margin: auto; border: 10px solid #333; border-radius: 10px; box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); position: relative;">
-                    <div style="height: 30px; background: #444;  display: flex; align-items: center; padding: 0 10px;">
-                        <div style="width: 15px; height: 15px; background: red; border-radius: 50%; margin-right: 5px; cursor: pointer;"></div>
-                        <div style="width: 15px; height: 15px; background: yellow; border-radius: 50%; margin-right: 5px; cursor: pointer;"></div>
-                        <div style="width: 15px; height: 15px; background: green; border-radius: 50%; cursor: pointer;"></div>
+                
+                <div class="default" style="width: 100%; max-width: 900px; margin: auto; border: 10px solid #333; border-radius: 10px; box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); position: relative;">
+                    <div class="pane" style="height: 30px; background: #444;  display: flex; align-items: center; padding: 0 10px;">
+                        <div class="red" style="width: 15px; height: 15px; background: red; border-radius: 50%; margin-right: 5px; cursor: pointer;"></div>
+                        <div class="yellow" style="width: 15px; height: 15px; background: yellow; border-radius: 50%; margin-right: 5px; cursor: pointer;"></div>
+                        <div class="green" style="width: 15px; height: 15px; background: green; border-radius: 50%; cursor: pointer;"></div>
                     </div>
-                    <iframe id="myFrame" src="" style="width: 100%; height: 460px; border: none; border-radius: 0; background-color: #f0f0f0;">
+                    <iframe id="myFrame" class="myFrame" src="https://lottie.host/embed/8882ecb9-f344-45a4-a230-778158781d67/eBXBcfkQjH.json" style="width: 100%; height: 460px; border: none; border-radius: 0; background-color: #f0f0f0; ">
+                        
                     </iframe>
                 </div>
                 
@@ -74,9 +79,22 @@
         </div>
     </div>
 <script>
+    // fram display function for iframe
     function myFrame(file){
+        
         document.getElementById('myFrame').src = file;
     };
+
+    //js to download my cv
+    function downloadCV(fileName) {
+    // Create a link element
+    const link = document.createElement('a');
+    link.href = fileName;
+    link.download = fileName; // Set the download attribute
+    document.body.appendChild(link); // Append to body
+    link.click(); // Trigger click to download
+    document.body.removeChild(link); // Clean up
+    }
 </script>
 </body>
 </html> 

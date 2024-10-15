@@ -21,7 +21,10 @@ body {
 .left-column {
     width: 25%; /* 4/12 width */
     background-color: #f4f4f4; /* Light gray for visibility */
-    padding: 70px;
+    padding-left: 70px;
+    padding-right: 70px;
+    padding-bottom: 70px;
+    padding-top: 20px;
     
 }
 .left-column p{
@@ -38,7 +41,8 @@ body {
     align-items: center; /* Center horizontally */
     text-align: center; /* Center text */
     padding-bottom: 30px;
-    padding: 20px; /* Default padding */ 
+    margin-top: 20px;
+    /* Default padding */ 
 }
 .inner-left img {
   height: 150px; /* Default image height */
@@ -100,6 +104,7 @@ nav ul li button{
   cursor: pointer;
   font-size: medium;  
   left: 50%;
+  font-weight: 400px;
   }
   
 nav ul li{
@@ -185,29 +190,37 @@ nav ul li{
 }
 
 .inner-right {   
-    height: 30%;
+    height: 100px;
     
 }
 
 .bottom-right{
     padding-top: 15px;
+    margin-top: 30px;
+    
 }
 .iframe{
-    
-    width: 100%;
-    height:400px;
-    border: none;
+    width: 100%; 
+    max-height: 60%;
+    height: 460px; 
+    border: none; 
+    border-radius: 0; 
+    background-color: #f0f0f0;
 }
 .highlight{
     font-size: 50px;
-    margin-top: 50px;
-    margin-bottom: 30px;
+    margin-top: 0px;
+    margin-bottom: 0px;
 }
 @media (max-width: 1024px) {
-  .highlight {
-      margin-top: 0;
+  .highlight p {
+      margin-top: 0px;
       /* You can add more styles here if needed */
   }
+  .highlight {
+    margin-top: 0px;
+    /* You can add more styles here if needed */
+}
   .inner-left img{
     height: 100px;
     width: 100px;
@@ -221,6 +234,7 @@ nav ul li{
 @media (max-width: 932px) {
   .highlight {
       font-size: 25px;
+      margin-top: 40px;
   }
 }
 .navsys {   
@@ -228,14 +242,17 @@ nav ul li{
 }
 
 /*i frame*/
-.default {
+iframe {
   width: 100%;
-  max-width: 900px;
+  height: 640px;
+}
+
+.default {
+  max-width: 85%;
   margin: auto;
   border: 10px solid #333;
   border-radius: 10px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-  position: relative;
 }
 
 .pane {
@@ -254,7 +271,7 @@ nav ul li{
   cursor: pointer;
 }
 
-red {
+.red {
   background: red;
 }
 
@@ -268,7 +285,7 @@ red {
 
 .myframe {
   width: 100%;
-  height: 460px;
+  height: 60%;
   border: none;
   border-radius: 0;
   background-color: #f0f0f0;

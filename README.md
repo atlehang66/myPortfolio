@@ -9,7 +9,8 @@ My Portfolio is a simple web application built with HTML, CSS, and JavaScript.
 Dark mode switch
 Interactive virtual PC
 Home button integrated into the user icon
-Technologies Used
+
+                                                              /*          Technologies Used              */ 
 HTML
 CSS
 JavaScript

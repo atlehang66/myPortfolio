@@ -95,7 +95,9 @@ body {
   border: 2px solid green;
   animation: flash 1s infinite;
 }
-
+.flash-border:hover {
+  animation: none;
+}
 @keyframes flash {
   0% { border-color: green; }
   50% { border-color: transparent; }

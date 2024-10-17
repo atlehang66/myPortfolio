@@ -101,7 +101,8 @@ body {
   50% { border-color: transparent; }
   100% { border-color: green; }
 }
-/*Nav System Border Highlight*/
+/*matics here*/
+
 
 /*Menu System used as container*/
 nav ul li button{
@@ -280,6 +281,9 @@ iframe {
   border-radius: 50%;
   margin-right: 5px;
   cursor: pointer;
+  color: rgb(204, 204, 204);
+  font-size: 13px;
+  justify-items: center;
 }
 
 .red {

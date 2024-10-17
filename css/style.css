@@ -103,6 +103,17 @@ body {
   50% { border-color: transparent; }
   100% { border-color: green; }
 }
+/* disapper border */
+@media (max-width: 850px) { /* Adjust the max-width as needed */
+  .flash-border {
+    animation: none; /* Disable animation */
+    border-color: transparent; /* Make border transparent */
+  }
+
+  .bottom-right {
+    margin-top: 50px; /* Add top margin */
+  }
+}
 /*matics here*/
 
 

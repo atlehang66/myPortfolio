@@ -9,6 +9,17 @@
 
     
 </head>
+<script>
+    //Virtual PC btn functions
+    function navigateFrame(direction) {
+            const iframe = document.getElementById('myFrame');
+            if (direction === 'back') {
+                window.history.back();
+            } else if (direction === 'forward') {
+                window.history.forward();
+            }
+        }
+</script>
 <body>
 
     <div class="container">
@@ -49,7 +60,7 @@
             <div class="inner-right">
 
                 <center>
-                    <p class="highlight">Hi there! I'm Atlehang Semela</p>
+                    <p class="highlight">Hi there! I'm Atlehang Semela. </p>
                         <div class="btn">
                             <input type="button"onclick="myFrame('contactForm.html')" value="Lets Connect">
                             <input type="button"onclick="myFrame('Atlehang Semela cv2.pdf')" value="Download CV">
@@ -64,9 +75,9 @@
                 
                 <div class="default" >
                     <div class="pane">
-                        <div class="red circle"></div>
+                        <div class="red circle" onclick="navigateFrame('back')"><center><</center></div>
                         <div class="yellow circle"></div>
-                        <div class="green circle"></div>
+                        <div class="green circle" onclick="navigateFrame('forward')"><center>></center></div>
                     </div>
                     <iframe id="myFrame" class="myFrame" src="https://lottie.host/embed/8882ecb9-f344-45a4-a230-778158781d67/eBXBcfkQjH.json">
                         
@@ -98,6 +109,9 @@
     document.body.appendChild(link); // Append to body
     link.click(); // Trigger click to download
     document.body.removeChild(link); // Clean up
+
+    
+    
     }
 </script>
 </body>

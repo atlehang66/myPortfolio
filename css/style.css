@@ -7,8 +7,6 @@ body {
     font-family: Arial, sans-serif;
     height: 100vh; /* Full viewport height */
 }
-
-
 .fa-hand-o-left {
   display: inline-block;
   animation: beep 0.5s ease-in-out infinite; /* Adjust duration for faster or slower beeping */
@@ -92,7 +90,7 @@ body {
     align-items: center;
 }
 .flash-border {
-  border: 2px solid green;
+  border: 1px solid rgb(66, 164, 66);
   animation: flash 1s infinite;
 }
 .flash-border:hover {
@@ -115,8 +113,6 @@ body {
   }
 }
 /*matics here*/
-
-
 /*Menu System used as container*/
 nav ul li button{
     
@@ -177,11 +173,12 @@ nav ul li{
   }
   
   input:checked + .slider {
-    background-color: #04AA6D;
+    border-color: #333;
+    background-color: #000000;
   }
   
   input:focus + .slider {
-    box-shadow: 0 0 1px #04AA6D;
+    box-shadow: 0 0 1px #fbfbfb;
   }
   
   input:checked + .slider:before {
@@ -189,12 +186,10 @@ nav ul li{
     -ms-transform: translateX(28px);
     transform: translateX(28px);
   }
-  
   /* Rounded sliders */
   .slider.round {
     border-radius: 34px;
   }
-  
   .slider.round:before {
     border-radius: 50%;
   }
@@ -205,18 +200,23 @@ nav ul li{
     padding: 10px;
 }
 .btn input{
-    background-color: #04AA6D;
-    color: white;
+    background-color: transparent;
+    color: rgb(6, 72, 25);
     padding: 12px 20px;
-    border: none;
+    border:1px solid rgb(72, 72, 72);
     border-radius: 4px;
     cursor: pointer;
+    
 }
 
 .inner-right {   
     height: 80px;
     
 }
+
+
+
+
 @media (max-width: 280px) {
   .inner-right p{
       margin-top: 0;
@@ -233,8 +233,10 @@ nav ul li{
 }
 .highlight{
     font-size: 50px;
-    margin-top: 30px;
+    margin-top: 10px;
     margin-bottom: 0px;
+    text-shadow: 0 2px 2px green;
+    color: rgb(197, 196, 196);
 }
 @media (max-width: 1024px) {
   .highlight p {

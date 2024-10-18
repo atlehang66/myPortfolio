@@ -42,11 +42,11 @@ body {
     align-items: center; /* Center horizontally */
     text-align: center; /* Center text */
     padding-bottom: 30px;
-    margin-top: 20px;
+    margin-top: 5px;
     /* Default padding */ 
 }
 .inner-left img {
-  height: 150px; /* Default image height */
+  height: 100px; /* Default image height */
   border-radius: 100%; /* Make the image circular */
   filter: grayscale(100%); /* Apply grayscale filter */
 }
@@ -202,7 +202,7 @@ nav ul li{
 .right-column {
     flex: 1; /* Take up remaining space */
     background-color: #e0e0e0; /* Slightly darker gray */
-    padding: 20px;
+    padding: 10px;
 }
 .btn input{
     background-color: #04AA6D;
@@ -214,7 +214,7 @@ nav ul li{
 }
 
 .inner-right {   
-    height: 100px;
+    height: 80px;
     
 }
 @media (max-width: 280px) {
@@ -229,11 +229,11 @@ nav ul li{
   }
 }
 .bottom-right{
-  margin-top: 70px;
+  margin-top: 30px;
 }
 .highlight{
     font-size: 50px;
-    margin-top: 50px;
+    margin-top: 30px;
     margin-bottom: 0px;
 }
 @media (max-width: 1024px) {
@@ -269,7 +269,7 @@ nav ul li{
 
 iframe {
   width: 100%;
-  height: 360px;
+  height: 300px;
 }
 
 .default {

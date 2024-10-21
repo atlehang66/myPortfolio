@@ -7,6 +7,10 @@ body {
     font-family: Arial, sans-serif;
     height: 100vh; /* Full viewport height */
 }
+body.dark-mode {
+  background-color: #121212; /* Dark background */
+  color: #e0e0e0; /* Light text */
+}
 .fa-hand-o-left {
   display: inline-block;
   animation: beep 0.5s ease-in-out infinite; /* Adjust duration for faster or slower beeping */
@@ -326,3 +330,36 @@ iframe {
   background: green;
 }
 
+/* Dark mode by system default. OS level operation  */
+@media (prefers-color-scheme: dark) {
+  body {
+      background-color: #121212; /* Dark background */
+      color: #e0e0e0; /* Light text */
+  }
+  .btn input{
+    color: greenyellow;  
+    border-color: #ccc;
+  }
+  .highlight{
+    text-shadow: 0 2px 2px rgb(153, 255, 0);
+  }
+  .left-column {
+      background-color: #1e1e1e; 
+  }
+
+  .right-column {
+      background-color: #1e1e1e; 
+  }
+
+  .bottom-left {
+      background-color: #2e2e2e; 
+  }
+
+  .navsys {
+      background-color: #1e1e1e; 
+  }
+  nav ul li button{
+    color: white;
+  }
+  
+}

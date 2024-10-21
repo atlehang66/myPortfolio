@@ -49,10 +49,12 @@
                 <center>
                     <p>Switch to Dark Mode</p>
 
-                    <label class="switch">
-                    <input type="checkbox" checked>
-                    <span class="slider round"></span>
-                    </label>
+                    
+                        <label class="switch" onclick="myFunction()">
+                            <input type="checkbox" checked id="mode-toggle">
+                            <span class="slider round"></span>
+                            </label>
+                    
                     
                 </center>
         </div>
@@ -114,7 +116,22 @@
     link.click(); // Trigger click to download
     document.body.removeChild(link); // Clean up
 
+    // Dark Mode Function
     
+    // const toggleSwitch = document.getElementById('mode-toggle');
+    // function switchTheme() {
+    //     if (toggleSwitch.checked) {
+    //         document.documentElement.setAttribute('data-theme', 'dark');
+    //         } else {
+    //         document.documentElement.setAttribute('data-theme', 'light');
+    //         }
+    //     }
+    //     toggleSwitch.addEventListener('change', switchTheme); 
+
+    // function myFunction() {
+    // var element = document.body;
+    // element.classList.toggle("dark-mode");
+    // }
     
     }
 </script>

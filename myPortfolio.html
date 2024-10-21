@@ -6,6 +6,7 @@
     <title>Two Column Layout</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    
 
     
 </head>
@@ -35,12 +36,13 @@
                 </center>
             </div>
             <div class="bottom-left flash-border" style="margin: auto;">
+                
                 <center>
                     <nav>
                         <ul style="margin-left: -40px;">
-                            <li><button onclick="myFrame('about.html')">About</button></li>
-                            <li><button onclick="myFrame('project.html')">Projects</button></li>
-                            <li><button onclick="myFrame('contact.html')">Contacts</button></li>
+                            <li class="fa fa-address-book-o" aria-hidden="true" ><button onclick="myFrame('about.html')">About</button></li>
+                            <li class="fa fa-briefcase" aria-hidden="true" ><button onclick="myFrame('project.html')">Projects</button></li>
+                            <li class="fa fa-envelope" aria-hidden="true" ><button onclick="myFrame('contact.html')">Contacts</button></li>
                         </ul>
                     </nav>
                 </center>
@@ -67,15 +69,17 @@
                         
                 
                 </center>
+
+                <center>
+                    <div class="btn">
+                        <input type="button"onclick="myFrame('contactForm.html')" value="Lets Connect">
+                        <input type="button"onclick="myFrame('Atlehang Semela cv2.pdf')" value="Download CV">
+                    </div>
+                </center>
                 
             </div>
             <!--Contaion from w3-->
-            <center>
-                <div class="btn">
-                    <input type="button"onclick="myFrame('contactForm.html')" value="Lets Connect">
-                    <input type="button"onclick="myFrame('Atlehang Semela cv2.pdf')" value="Download CV">
-                </div>
-            </center>
+            
 
             <div class="bottom-right">
                 <!--mySlides from w3-->
@@ -86,7 +90,7 @@
                         <div class="yellow circle"></div>
                         <div class="green circle" onclick="navigateFrame('forward')"><center></center></div>
                     </div>
-                    <iframe id="myFrame" class="myFrame" src="https://lottie.host/embed/8882ecb9-f344-45a4-a230-778158781d67/eBXBcfkQjH.json">
+                    <iframe id="myFrame"  class="myFrame" src="https://lottie.host/embed/8882ecb9-f344-45a4-a230-778158781d67/eBXBcfkQjH.json">
                         
                     </iframe>
                 </div>

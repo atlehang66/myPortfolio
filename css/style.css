@@ -287,7 +287,7 @@ iframe {
   background-color: #f0f0f0;
 }
 .default {
-  max-width: 85%;
+  max-width: 60%;
   margin: auto;
   border: 10px solid #333;
   border-radius: 10px;

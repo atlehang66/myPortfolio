@@ -333,8 +333,8 @@ iframe {
 /* Dark mode by system default. OS level operation  */
 @media (prefers-color-scheme: dark) {
   body {
-      background-color: #121212; /* Dark background */
-      color: #e0e0e0; /* Light text */
+      background-color: #121212; 
+      color: #e0e0e0; 
   }
   .btn input{
     color: greenyellow;  
@@ -361,5 +361,4 @@ iframe {
   nav ul li button{
     color: white;
   }
-  
 }

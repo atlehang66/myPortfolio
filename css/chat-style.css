@@ -1,0 +1,41 @@
+.chat-popup {
+  display: none;
+}
+
+.chat-btn {
+  padding-right: 10px;
+  width: 40px;
+  position: relative;
+  float: right;
+}
+footer{
+  background: linear-gradient(to bottom, transparent, rgba(207, 255, 135, 0.158));
+  height: 30px;
+ border-radius: 10px;
+
+}
+.chat-icon {
+  background-color: transparent; /* No background */
+  border: none; 
+  cursor: pointer; 
+  animation: bounce 2s infinite; 
+}
+
+.chat-btn > img {
+  width: 100%; 
+  height: auto; 
+}
+
+/* Define the bounce animation */
+@keyframes bounce {
+  0%, 100% {
+      transform: translateY(0); 
+  }
+  25% {
+      transform: translateY(-5px); 
+  }
+
+  50%{
+    transform: translateY(0);
+  }
+}

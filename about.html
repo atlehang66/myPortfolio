@@ -4,64 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile with Skills and Personal Information</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 20px;
-        }
-        .container {
-            display: flex;
-            max-width: 1200px;
-            margin: auto;
-        }
-        .info-container, .skills-container {
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            margin: 10px;
-            flex: 1; /* Allow both sections to take equal space */
-        }
-        h2 {
-            text-align: center;
-            color: #333;
-            font-size: large;
-        }
-        .personal-info{
-          padding: 15px;
-        }
-        .skill {
-            margin: 15px 0;
-        }
-        .skill-name {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-          
-        }
-        .progress {
-            background-color: #e0e0e0;
-            border-radius: 5px;
-            overflow: hidden;
-            width: 100%;
-            height: 20px;
-            margin-top: 5px;
-        }
-        .progress-bar {
-            height: 100%;
-            width: 0;
-            background-color: #76c7c0;
-            text-align: center;
-            color: white;
-            line-height: 20px;
-            transition: width 1s ease;
-        }
-        .personal-info {
-            margin: 10px 0;
-        }
-    </style>
+    <link rel="stylesheet" href="about.css">
+    
 </head>
 <body>
 
@@ -149,19 +93,8 @@
     </div>
 </div>
 
-<script>
-    // Function to animate the progress bars on page load
-    window.onload = function() {
-        const progressBars = document.querySelectorAll('.progress-bar');
-        progressBars.forEach(bar => {
-            const width = bar.style.width;
-            bar.style.width = '0'; // Reset width for animation
-            setTimeout(() => {
-                bar.style.width = width; // Set width to animate
-            }, 100);
-        });
-    };
-</script>
+
+<script src="myPortfolio\js\about.js"></script>
 
 </body>
 </html>

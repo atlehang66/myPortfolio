@@ -1,30 +1,42 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<link rel="stylesheet" href="css/chat-style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 </head>
 <body>
 
-
+<link rel="stylesheet" href="css/chat-style.css">
 
 <div class="chat-popup" id="myForm">
     <div id="questionContainer" class="form-container">
-        <h1>Chat with Dilan</h1>
-        <p class="typing-indicator">Hello! I'm Dilan. Please select any question from the options below:</p>
-        <button class="chat-btn" onclick="toggleAnswer('answer1')">What is your experience in web development?</button>
-        <button class="chat-btn" onclick="toggleAnswer('answer2')">Can you show examples of your previous work?</button>
-        <button class="chat-btn" onclick="toggleAnswer('answer3')">What technologies do you specialize in?</button>
-        <button class="chat-btn" onclick="toggleAnswer('answer4')">How do you handle project deadlines?</button>
-        <button class="chat-btn" onclick="toggleAnswer('answer5')">What is your process for starting a new project?</button>
+        
+        <center>
+            <div class="chat-head">
+                <h1 class="chat-lead"> <img src="icons/chat-square-code-svgrepo-com.png" alt=""> Hello! I'm Dilan. </h1>
+                <p class="typing-indicator"> Please select any question from the options below:</p>
+            </div>
+            
+        </center>
+        
+            <div class="msg-area">
+                <button class="chat-msg" onclick="toggleAnswer('answer1')">What is your experience in web development?</button>
+                
+                <button class="chat-msg" onclick="toggleAnswer('answer2')">Can you show examples of your previous work?</button>
+                <button class="chat-msg" onclick="toggleAnswer('answer3')">What technologies do you specialize in?</button>
+                <button class="chat-msg" onclick="toggleAnswer('answer4')">How do you handle project deadlines?</button>
+                <button class="chat-msg" onclick="toggleAnswer('answer5')">What is your process for starting a new project?</button>
+            </div>
     </div>
     <div id="answerContainer" class="form-container" style="display:none;">
         <p id="answerText"></p>
-        <button class="shrink-border" onclick="showQuestions()">Back to FAQs</button>
-        <button class="shrink-border" onclick="closeForm()">Close Chat</button>
+        <button class="chatbtn" onclick="showQuestions()">Back to FAQs</button>
+        <button class="chatbtn" onclick="closeForm()">Close Chat</button>
     </div>
 </div>
 
-<script src="myPortfolio\js\chatControl.js"></script>
+<script src="/myPortfolio/js/chatControl.js"></script>
+<script src="js/frameControl.js"></script>
 </body>
 </html>

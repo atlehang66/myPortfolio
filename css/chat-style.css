@@ -1,5 +1,42 @@
-.chat-popup {
+/* .chat-popup {
   display: none;
+} */
+
+.chat-popup{
+  font-family: 'Times New Roman', Times, serif;
+  background-color: rgb(194, 255, 255);
+  height: 85vh;
+  padding: 10px;
+}
+#myForm {
+  display: none;
+  padding: 2%;
+}
+.chat-head{
+  border-bottom: 1px solid gray;
+  margin-top: 0;
+}
+img{
+  height: 20px
+}
+h1{
+  
+}
+/* container */
+.msg-area{
+  padding: 10px;
+}
+/* messages */
+.chat-msg{
+  margin: 5px;
+  align-items: center;
+  height: 36px;
+  justify-content: center;
+  box-shadow: greenyellow;
+  background: var(--xhUGwc);
+  border-radius: 20px;
+  min-width: 38px;
+  cursor: pointer;
 }
 
 .chat-btn {
@@ -7,6 +44,15 @@
   width: 40px;
   position: relative;
   float: right;
+}
+/* back to Faq btn */
+.chatbtn{
+  background-color: transparent;
+    color: rgb(6, 72, 25);
+    padding: 12px 20px;
+    border:1px solid rgb(72, 72, 72);
+    border-radius: 4px;
+    cursor: pointer;
 }
 footer{
   background: linear-gradient(to bottom, transparent, rgba(207, 255, 135, 0.158));

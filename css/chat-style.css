@@ -3,8 +3,14 @@
 } */
 
 .chat-popup{
+  background-color: rgba(255, 255, 255, 0.733); /* White with 30% opacity */
+    border-radius: 10px; /* Rounded corners */
+    backdrop-filter: blur(10px); /* Blur effect */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+    padding: 20px; /* Inner spacing */
+    border: 1px solid rgba(255, 255, 255, 0.5); /* Optional border */
   font-family: 'Times New Roman', Times, serif;
-  background-color: rgb(194, 255, 255);
+  /* background-color: rgb(194, 255, 255); */
   height: 85vh;
   padding: 10px;
 }
@@ -47,7 +53,7 @@ h1{
 }
 /* back to Faq btn */
 .chatbtn{
-  background-color: transparent;
+    background-color: transparent;
     color: rgb(6, 72, 25);
     padding: 12px 20px;
     border:1px solid rgb(72, 72, 72);

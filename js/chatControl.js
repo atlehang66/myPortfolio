@@ -37,6 +37,5 @@ function showQuestions() {
 function closeForm() {
     parent.location.reload();
     // document.getElementById("myForm").style.display = "none";
-
     myForm.src = "https://lottie.host/embed/8882ecb9-f344-45a4-a230-778158781d67/eBXBcfkQjH.json";
 }

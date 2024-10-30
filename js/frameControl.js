@@ -43,3 +43,8 @@
     }
     
     }
+
+    function myFunction() {
+        const toggle = document.getElementById('mode-toggle');
+        document.body.classList.toggle('dark-mode', toggle.checked);
+    }

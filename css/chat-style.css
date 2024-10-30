@@ -23,10 +23,11 @@
   margin-top: 0;
 }
 img{
-  height: 20px
+  height: 30px
 }
-h1{
-  
+p{
+  font-weight: 600;
+  font-size: medium;
 }
 /* container */
 .msg-area{

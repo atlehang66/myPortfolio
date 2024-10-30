@@ -1,4 +1,5 @@
 const myForm = document.getElementById("myForm");
+const myFrame = document.getElementById("myFrame")
     
 window.addEventListener('load', () => {
     console.log("doc loaded");
@@ -35,7 +36,9 @@ function showQuestions() {
 }
 
 function closeForm() {
-    parent.location.reload();
-    // document.getElementById("myForm").style.display = "none";
-    myForm.src = "https://lottie.host/embed/8882ecb9-f344-45a4-a230-778158781d67/eBXBcfkQjH.json";
+    const myForm = document.getElementById("myForm");
+    myForm.src = ""; // Temporarily clear the src
+    myForm.src = "https://lottie.host/embed/8882ecb9-f344-45a4-a230-778158781d67/eBXBcfkQjH.json"; // Set the new src
+    window.location.assign("https://lottie.host/embed/8882ecb9-f344-45a4-a230-778158781d67/eBXBcfkQjH.json")
+    
 }

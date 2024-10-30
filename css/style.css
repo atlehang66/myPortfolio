@@ -9,8 +9,38 @@ body {
 }
 body.dark-mode {
   background-color: #121212; 
-  color: #e0e0e0; 
+  color: white; 
 }
+
+.dark-mode .btn input {
+  color: greenyellow;  
+  border-color: #ccc;
+}
+
+.dark-mode .highlight {
+  text-shadow: 0 2px 2px rgb(153, 255, 0);
+}
+
+.dark-mode .left-column {
+  background-color: #1e1e1e; 
+}
+
+.dark-mode .right-column {
+  background-color: #1e1e1e09; 
+}
+
+.dark-mode .bottom-left {
+  background-color: #2e2e2e; 
+}
+
+.dark-mode .navsys {
+  background-color: #1e1e1e; 
+}
+
+.dark-mode nav ul li button {
+  color: white;
+}
+
 .fa-hand-o-left {
   display: inline-block;
   animation: beep 0.5s ease-in-out infinite; /* Adjust duration for faster or slower beeping */
@@ -107,13 +137,13 @@ body.dark-mode {
 }
 /* disapper border */
 @media (max-width: 850px) {
+  
   .flash-border {
     animation: none;
     border-color: transparent;
   }
-
   .bottom-right {
-    margin-bottom: auto; /* Add top margin */
+    margin-bottom: 0; /* Add top margin */
   }
 }
 /*matics here*/
@@ -270,7 +300,7 @@ nav ul li{
 @media (max-width: 932px) {
   .highlight {
       font-size: 25px;
-      margin-top: 40px;
+      
   }
 }
 .navsys {   
@@ -280,7 +310,7 @@ nav ul li{
 /*i frame*/
 
 iframe {
-
+  
   width: 100%;
   min-height: 300px;
 }
@@ -290,13 +320,15 @@ iframe {
   border-radius: 0;
   background-color: #f0f0f0;
 }
+
 .default {
   max-width: 60%;
   margin: auto;
   border: 10px solid #333;
   border-radius: 10px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-  margin-bottom: 5%;
+  margin-top: 5%;
+  margin-bottom: 0;
 }
 
 .pane {

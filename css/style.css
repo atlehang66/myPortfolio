@@ -245,17 +245,13 @@ nav ul li{
     padding: 12px 20px;
     border:1px solid rgb(72, 72, 72);
     border-radius: 4px;
-    cursor: pointer;
-    
+    cursor: pointer;   
 }
 
 .inner-right {   
     height: 80px;
     
 }
-
-
-
 
 @media (max-width: 280px) {
   .inner-right p{
@@ -276,7 +272,7 @@ nav ul li{
     margin-top: 0px;
     margin-bottom: 2%;
     text-shadow: 0 2px 2px green;
-    color: rgb(197, 196, 196);
+    color: rgb(61, 61, 61);
 }
 @media (max-width: 1024px) {
   .highlight p {

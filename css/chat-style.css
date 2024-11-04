@@ -1,0 +1,94 @@
+/* .chat-popup {
+  display: none;
+} */
+
+.chat-popup{
+  background-color: rgba(255, 255, 255, 0.733); /* White with 30% opacity */
+    border-radius: 10px; /* Rounded corners */
+    backdrop-filter: blur(10px); /* Blur effect */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+    padding: 20px; /* Inner spacing */
+    border: 1px solid rgba(255, 255, 255, 0.5); /* Optional border */
+  font-family: 'Times New Roman', Times, serif;
+  /* background-color: rgb(194, 255, 255); */
+  height: 85vh;
+  padding: 10px;
+}
+#myForm {
+  display: none;
+  padding: 2%;
+}
+.chat-head{
+  border-bottom: 1px solid gray;
+  margin-top: 0;
+}
+img{
+  height: 30px
+}
+p{
+  font-weight: 600;
+  font-size: medium;
+}
+/* container */
+.msg-area{
+  padding: 10px;
+}
+/* messages */
+.chat-msg{
+  margin: 5px;
+  align-items: center;
+  height: 36px;
+  justify-content: center;
+  box-shadow: greenyellow;
+  background: var(--xhUGwc);
+  border-radius: 20px;
+  min-width: 38px;
+  cursor: pointer;
+}
+
+.chat-btn {
+  padding-right: 10px;
+  width: 40px;
+  position: relative;
+  float: right;
+}
+/* back to Faq btn */
+.chatbtn{
+    background-color: transparent;
+    color: rgb(6, 72, 25);
+    padding: 12px 20px;
+    border:1px solid rgb(72, 72, 72);
+    border-radius: 4px;
+    cursor: pointer;
+}
+footer{
+  background: linear-gradient(to bottom, transparent, rgba(207, 255, 135, 0.158));
+  height: 30px;
+ border-radius: 10px;
+
+}
+.chat-icon {
+  background-color: transparent; /* No background */
+  border: none; 
+  cursor: pointer; 
+  animation: bounce 2s infinite; 
+}
+
+.chat-btn > img {
+  width: 100%; 
+  height: auto; 
+}
+
+/* Define the bounce animation */
+@keyframes bounce {
+  0%, 100% {
+      transform: translateY(0); 
+  }
+  25% {
+      transform: translateY(-5px); 
+  }
+
+  50%{
+    transform: translateY(0);
+  }
+}

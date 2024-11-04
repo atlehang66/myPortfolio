@@ -8,9 +8,39 @@ body {
     height: 100vh; /* Full viewport height */
 }
 body.dark-mode {
-  background-color: #121212; /* Dark background */
-  color: #e0e0e0; /* Light text */
+  background-color: #121212; 
+  color: white; 
 }
+
+.dark-mode .btn input {
+  color: greenyellow;  
+  border-color: #ccc;
+}
+
+.dark-mode .highlight {
+  text-shadow: 0 2px 2px rgb(153, 255, 0);
+}
+
+.dark-mode .left-column {
+  background-color: #1e1e1e; 
+}
+
+.dark-mode .right-column {
+  background-color: #1e1e1e09; 
+}
+
+.dark-mode .bottom-left {
+  background-color: #2e2e2e; 
+}
+
+.dark-mode .navsys {
+  background-color: #1e1e1e; 
+}
+
+.dark-mode nav ul li button {
+  color: white;
+}
+
 .fa-hand-o-left {
   display: inline-block;
   animation: beep 0.5s ease-in-out infinite; /* Adjust duration for faster or slower beeping */
@@ -21,8 +51,8 @@ body.dark-mode {
 }
 
 .left-column {
-    width: 25%; /* 4/12 width */
-    background-color: #f4f4f4; /* Light gray for visibility */
+    width: 25%; 
+    background-color: #f4f4f4;
     padding-left: 70px;
     padding-right: 70px;
     padding-bottom: 70px;
@@ -39,18 +69,18 @@ body.dark-mode {
 .inner-left {
     height: 30%;
     display: flex;
-    flex-direction: column; /* Align items in a column */
-    justify-content: center; /* Center vertically */
-    align-items: center; /* Center horizontally */
-    text-align: center; /* Center text */
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center; 
+    text-align: center; 
     padding-bottom: 30px;
     margin-top: 5px;
     /* Default padding */ 
 }
 .inner-left img {
-  height: 100px; /* Default image height */
-  border-radius: 100%; /* Make the image circular */
-  filter: grayscale(100%); /* Apply grayscale filter */
+  height: 100px;
+  border-radius: 100%; 
+  filter: grayscale(100%);
 }
 
 .inner-left a {
@@ -106,14 +136,14 @@ body.dark-mode {
   100% { border-color: green; }
 }
 /* disapper border */
-@media (max-width: 850px) { /* Adjust the max-width as needed */
+@media (max-width: 850px) {
+  
   .flash-border {
-    animation: none; /* Disable animation */
-    border-color: transparent; /* Make border transparent */
+    animation: none;
+    border-color: transparent;
   }
-
   .bottom-right {
-    margin-bottom: auto; /* Add top margin */
+    margin-bottom: 0; /* Add top margin */
   }
 }
 /*matics here*/
@@ -215,17 +245,13 @@ nav ul li{
     padding: 12px 20px;
     border:1px solid rgb(72, 72, 72);
     border-radius: 4px;
-    cursor: pointer;
-    
+    cursor: pointer;   
 }
 
 .inner-right {   
     height: 80px;
     
 }
-
-
-
 
 @media (max-width: 280px) {
   .inner-right p{
@@ -246,7 +272,7 @@ nav ul li{
     margin-top: 0px;
     margin-bottom: 2%;
     text-shadow: 0 2px 2px green;
-    color: rgb(197, 196, 196);
+    color: rgb(61, 61, 61);
 }
 @media (max-width: 1024px) {
   .highlight p {
@@ -270,7 +296,7 @@ nav ul li{
 @media (max-width: 932px) {
   .highlight {
       font-size: 25px;
-      margin-top: 40px;
+      
   }
 }
 .navsys {   
@@ -280,7 +306,7 @@ nav ul li{
 /*i frame*/
 
 iframe {
-
+  
   width: 100%;
   min-height: 300px;
 }
@@ -290,13 +316,15 @@ iframe {
   border-radius: 0;
   background-color: #f0f0f0;
 }
+
 .default {
   max-width: 60%;
   margin: auto;
   border: 10px solid #333;
   border-radius: 10px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-  margin-bottom: 5%;
+  margin-top: 5%;
+  margin-bottom: 0;
 }
 
 .pane {
@@ -333,8 +361,8 @@ iframe {
 /* Dark mode by system default. OS level operation  */
 @media (prefers-color-scheme: dark) {
   body {
-      background-color: #121212; /* Dark background */
-      color: #e0e0e0; /* Light text */
+      background-color: #121212; 
+      color: #e0e0e0; 
   }
   .btn input{
     color: greenyellow;  
@@ -361,5 +389,4 @@ iframe {
   nav ul li button{
     color: white;
   }
-  
 }

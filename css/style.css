@@ -115,9 +115,9 @@ body.dark-mode {
 .bottom-left {
     background-color: rgb(228, 228, 228);
     height: 60%;
-    border-radius: 5%;
+    border-radius: 5px;
     /* padding: 20%; */
-    font-size: 30px;
+    font-size: 20px;
     border: 1px solid black;
     display: flex;
     justify-content: center;
@@ -137,7 +137,6 @@ body.dark-mode {
 }
 /* disapper border */
 @media (max-width: 850px) {
-  
   .flash-border {
     animation: none;
     border-color: transparent;
@@ -145,27 +144,34 @@ body.dark-mode {
   .bottom-right {
     margin-bottom: 0; /* Add top margin */
   }
+  .bottom-left p{
+    font-size: 0;
+  }
 }
 /*matics here*/
 /*Menu System used as container*/
+button{
+  background-color: transparent;
+  border-color: transparent;
+  display: flex;
+  padding-bottom: 20px;
+  font-size:large ;
+}
 nav ul li button{
-    
   border: none;
   background-color: transparent;
   color: black;
-  padding: 18px 8px;
-  border: none;
+  padding: 8px 8px;
   cursor: pointer;
-  font-size: medium;  
+  font-size: small;  
   left: 50%;
   font-weight: 400px;
+  /* display:flex; */
   }
   
 nav ul li{
   list-style: none;
-  
   padding-bottom: 20%;
-  
 }
 
 /* switch */

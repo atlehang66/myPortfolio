@@ -7,31 +7,13 @@
     };
 
     //js to download my cv
-    function downloadCV(fileName) {
-    // Create a link element
-    const link = document.createElement('a');
-    link.href = fileName;
-    link.download = fileName; // Set the download attribute
-    document.body.appendChild(link); // Append to body
-    link.click(); // Trigger click to download
-    document.body.removeChild(link); // Clean up
-
-    // Dark Mode Function
+    function downloadCV() {
+        const link = document.createElement('a');
+        link.href = 'Atlehang Semela cv2.pdf'; // Ensure this file is in the same directory or adjust the path
+        link.download = 'Atlehang Semela cv2.pdf';
+        link.click();
+    }
     
-    // const toggleSwitch = document.getElementById('mode-toggle');
-    // function switchTheme() {
-    //     if (toggleSwitch.checked) {
-    //         document.documentElement.setAttribute('data-theme', 'dark');
-    //         } else {
-    //         document.documentElement.setAttribute('data-theme', 'light');
-    //         }
-    //     }
-    //     toggleSwitch.addEventListener('change', switchTheme); 
-
-    // function myFunction() {
-    // var element = document.body;
-    // element.classList.toggle("dark-mode");
-    // }
 
     function navigateFrame(direction) {
         const iframe = document.getElementById('myFrame');
@@ -42,7 +24,7 @@
         }
     }
     
-    }
+    
 
     function myFunction() {
         const toggle = document.getElementById('mode-toggle');

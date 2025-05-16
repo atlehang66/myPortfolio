@@ -318,7 +318,7 @@ iframe {
 }
 
 .default {
-  max-width: 60%;
+  max-width: 100%;
   margin: auto;
   border: 10px solid #333;
   border-radius: 10px;

@@ -116,7 +116,6 @@ body.dark-mode {
     background-color: rgb(228, 228, 228);
     height: 60%;
     border-radius: 5px;
-    /* padding: 20%; */
     font-size: 20px;
     border: 1px solid black;
     display: flex;
@@ -156,11 +155,14 @@ button{
   display: flex;
   padding-bottom: 20px;
   font-size:large ;
+  color: rgba(0, 172, 0, 0.995);
+  
 }
 nav ul li button{
   border: none;
   background-color: transparent;
-  color: black;
+  border: 1px solid rgb(66, 164, 66);
+  animation: flash 1s infinite;
   padding: 8px 8px;
   cursor: pointer;
   font-size: small;  
@@ -324,7 +326,7 @@ iframe {
 }
 
 .default {
-  max-width: 100%;
+  max-width: 88%;
   margin: auto;
   border: 10px solid #333;
   border-radius: 10px;

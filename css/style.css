@@ -163,7 +163,6 @@ button {
   border: none; /* Removes borders */
 }
 
-
 button:hover {
   background-color: rgba(0, 172, 0, 0.1);
   transform: translateY(-2px);
@@ -174,8 +173,6 @@ button:active {
   transform: scale(0.98);
   box-shadow: none;
 }
-
-
 
 /* HERE */
 nav ul li button{
@@ -344,8 +341,42 @@ iframe {
   border-radius: 0;
   background-color: #f0f0f0;
 }
-
 .default {
+  max-width: 85%;
+  margin: 5% auto 0 auto;
+  border-radius: 12px;
+  background: #e0e0e0; /* Light gray background */
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+  position: relative;
+  border: 1px solid #ccc;
+}
+
+/* Top bar simulating macOS title bar */
+.default::before {
+  content: '';
+  display: block;
+  height: 35px;
+  background: #333;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  position: relative;
+}
+
+/* Circles for red, yellow, green buttons */
+.default::after {
+  content: '';
+  position: absolute;
+  top: 10px;
+  left: 14px;
+  width: 36px;
+  height: 12px;
+  background: radial-gradient(circle at 6px 6px, #ff5f57 5px, transparent 6px),
+              radial-gradient(circle at 18px 6px, #ffbd2e 5px, transparent 6px),
+              radial-gradient(circle at 30px 6px, #28c840 5px, transparent 6px);
+}
+
+/* .default {
   max-width: 85%;
   margin: auto;
   border: 10px solid #333;
@@ -384,7 +415,7 @@ iframe {
 
 .green {
   background: green;
-}
+} */
 
 /* Dark mode by system default. OS level operation  */
 @media (prefers-color-scheme: dark) {

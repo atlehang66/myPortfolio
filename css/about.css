@@ -82,7 +82,7 @@ padding: 15px;
   
   a {
     text-decoration: none;
-    font-size: 22px;
+    font-size: inherit;
     color: black;
   }
   

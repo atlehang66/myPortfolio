@@ -2,45 +2,50 @@
 <html lang="en">
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Image Slideshow with Controls</title>
+<title>Fullscreen Image Slideshow</title>
 <style>
-* {box-sizing: border-box;}
+* { box-sizing: border-box; }
+
 html, body {
-    height: 100%; /* Ensure the body takes up the full height */
-    margin: 0; /* Remove default margin */
+    margin: 0;
+    height: 100%;
+    background: #111;
 }
 
 .area {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center; /* Center content vertically */
-    height: 100vh; /* Full viewport height */
+    justify-content: center;
+    height: 100vh;
     position: relative;
 }
 
 .container {
     position: relative;
-    width: 50%;
-    max-width: 300px;
+    width: 90%;
+    height: 100vh; /* Taller viewing area */
     overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.4);
+    margin-top: 5px;
 }
 
 .image {
-    display: block;
     width: 100%;
-    height: auto;
+    height: 100%;
+    object-fit: contain; /* Ensures image fills the frame */
+    display: block;
 }
 
 .overlay {
     position: absolute; 
     bottom: 0; 
-    background: rgba(0, 0, 0, 0.5);
-    color: #f1f1f1; 
-    width: 100%;
-    transition: .5s ease;
-    opacity: 0;
+    background: rgba(0, 0, 0, 0.6);
     color: white;
+    width: 100%;
+    opacity: 0;
+    transition: 0.3s ease;
     font-size: 20px;
     padding: 20px;
     text-align: center;
@@ -63,31 +68,70 @@ html, body {
 }
 
 button {
-    background-color: #4CAF50; /* Green */
-    border: none;
+    background-color: rgba(128, 255, 132, 0.281); /* Semi-transparent green */
+    border: 1px solid rgba(43, 255, 0, 0.2);
     color: white;
-    padding: 10px 15px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
+    padding: 12px 20px;
     font-size: 16px;
-    margin: 4px 2px;
+    margin: 0 10px;
     cursor: pointer;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
 }
+button:hover {
+    background-color: rgba(76, 175, 80, 0.4);
+    box-shadow: 0 6px 14px rgba(0,0,0,0.3);
+}
+
 </style>
 </head>
 <body>
 
 <div class="area">
     <div class="container slide active">
-        <img src="myPortfolio/images/1.png" alt="" class="image">
-        <div class="overlay">Dark Mode</div>
+        <img src="images/1.png" alt="" class="image">
+        <div class="overlay">Portfolio</div>
     </div>
     <div class="container slide">
-        <img src="myPortfolio/images/2.png" alt="" class="image">
-        <div class="overlay">Light Mode</div>
+        <img src="images/2.png" alt="" class="image">
+        <div class="overlay">Portfolio</div>
     </div>
-    
+    <div class="container slide">
+        <img src="images/payroll.png" alt="" class="image">
+        <div class="overlay">Payroll System</div>
+    </div>
+    <div class="container slide">
+        <img src="images/image (3).png" alt="" class="image">
+        <div class="overlay">Payroll System</div>
+    </div>
+    <div class="container slide">
+        <img src="images/image (2).png" alt="" class="image">
+        <div class="overlay">Payroll System</div>
+    </div>
+    <div class="container slide">
+        <img src="images/moviedb.png" alt="" class="image">
+        <div class="overlay">Movie Database</div>
+    </div>
+    <div class="container slide">
+        <img src="images/image (5).png" alt="" class="image">
+        <div class="overlay">Movie Database</div>
+    </div>
+    <div class="container slide">
+        <img src="images/image (4).png" alt="" class="image">
+        <div class="overlay">Movie Database</div>
+    </div>
+    <div class="container slide">
+        <img src="images/bank.png" alt="" class="image">
+        <div class="overlay">Bank System</div>
+    </div>
+    <div class="container slide">
+        <img src="images/image (1).png" alt="" class="image">
+        <div class="overlay">Bank System</div>
+    </div>
+
     <div class="controls">
         <button onclick="prevSlide()">❮ Prev</button>
         <button onclick="nextSlide()">Next ❯</button>

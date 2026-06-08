@@ -1,418 +1,85 @@
 * {
-    box-sizing: border-box; /* Include padding and border in element's total width and height */
+    box-sizing: border-box;
 }
 
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    height: 100vh; /* Full viewport height */
-}
-body.dark-mode {
-  background-color: #121212; 
-  color: white; 
+    height: 100vh;
+    background-color: #121212;
+    color: #e0e0e0;
 }
 
-.dark-mode .btn input {
-  color: greenyellow;  
-  border-color: #ccc;
-}
-
-.dark-mode .highlight {
-  text-shadow: 0 2px 2px rgb(153, 255, 0);
-}
-
-.dark-mode .left-column {
-  background-color: #1e1e1e; 
-}
-
-.dark-mode .right-column {
-  background-color: #1e1e1e09; 
-}
-
-.dark-mode .bottom-left {
-  background-color: #2e2e2e; 
-}
-
-.dark-mode .navsys {
-  background-color: #1e1e1e; 
-}
-
-.dark-mode nav ul li button {
-  color: white;
-}
-
-.fa-hand-o-left {
-  display: inline-block;
-  animation: beep 0.5s ease-in-out infinite; /* Adjust duration for faster or slower beeping */
-}
 .container {
     display: flex;
-    height: 100%; /* Full height of the body */
+    height: 100%;
 }
-
-.left-column {
-    width: 25%; 
-    background-color: #f4f4f4;
-    padding-left: 70px;
-    padding-right: 70px;
-    padding-bottom: 70px;
-    padding-top: 20px;
-    
-}
-.left-column p{
-    font-size: small;
-    font-family: 'Times New Roman', Times, serif;
-    font-weight: 400;
-    margin-top: 0;
-}
-/* Profile section */
-.inner-left {
-    height: 30%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center; 
-    align-items: center; 
-    text-align: center; 
-    padding-bottom: 30px;
-    margin-top: 5px;
-    /* Default padding */ 
-}
-.inner-left img {
-  height: 100px;
-  border-radius: 100%; 
-  filter: grayscale(100%);
-}
-
-.inner-left a {
-  display: inline-block; /* Inline block for link */
-  padding: 5px; /* Default padding for link */
-  border: 1px solid rgb(194, 194, 194); /* Optional border */
-  border-radius: 50%; /* Circular border for the link */
-}
-@media (max-width: 932px) {
-  .inner-left {
-      padding: 10px; /* Adjust padding for smaller screens */
-      padding-bottom: 100px;
-  }
-
-  .inner-left img {
-      height: 100px; /* Change the image height */
-  }
-
-  @media (max-width: 430px) {
-    .highlight {
-        margin-top: 0;
-        /* You can add more styles here if needed */
-    }
-    .bottom-left{
-      
-      background-color: transparent;
-      border: none;
-    }
-  }
-}
-/* Nav system area */
-.bottom-left {
-    background-color: rgb(184, 184, 184);
-    height: 60%;
-    border-radius: 5px;
-    font-size: 20px;
-    border: 1px solid black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.flash-border {
-  border: 1px solid rgb(66, 164, 66);
-  animation: flash 1s infinite;
-}
-.flash-border:hover {
-  animation: none;
-}
-@keyframes flash {
-  0% { border-color: green; }
-  50% { border-color: transparent; }
-  100% { border-color: green; }
-}
-/* disapper border */
-@media (max-width: 850px) {
-  .flash-border {
-    animation: none;
-    border-color: transparent;
-  }
-  .bottom-right {
-    margin-bottom: 0; /* Add top margin */
-  }
-  .bottom-left p{
-    font-size: 0;
-  }
-}
-/*matics here*/
-/*Menu System used as container*/
-button {
-  background-color: transparent;
-  color: rgba(0, 172, 0, 0.548);
-  font-size: xx-large;
-  padding: 10px 20px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  border: none; /* Removes borders */
-  
-    display: block !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-
-
-}
-
-button:hover {
-  background-color: rgba(0, 172, 0, 0.1);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 172, 0, 0.3);
-}
-
-button:active {
-  transform: scale(0.98);
-  box-shadow: none;
-}
-
-/* HERE */
-nav ul li button{
-  border: none;
-  background-color: transparent;
-  border: 1px solid rgb(66, 164, 66);
-  animation: flash 1s infinite;
-  padding: 8px 8px;
-  cursor: pointer;
-  font-size: medium;  
-  left: 50%;
-  font-weight: 400px;
-  /* display:flex; */
-  }
-  
-nav ul li{
-  list-style: none;
-  padding-bottom: 20%;
-}
-
-/* switch */
-.switch {
-    position: relative;
-    display: inline-block;
-    width: 60px;
-    height: 30px;
-  }
-  
-  .switch input { 
-    opacity: 0;
-    width: 0;
-    height: 0;
-  }
-  
-  .slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ccc;
-    -webkit-transition: .4s;
-    transition: .4s;
-  }
-  
-  .slider:before {
-    position: absolute;
-    content: "";
-    height: 22px;
-    width: 22px;
-    left: 4px;
-    bottom: 4px;
-    background-color: white;
-    -webkit-transition: .4s;
-    transition: .2s;
-  }
-  
-  input:checked + .slider {
-    border-color: #333;
-    background-color: #000000;
-  }
-  
-  input:focus + .slider {
-    box-shadow: 0 0 1px #fbfbfb;
-  }
-  
-  input:checked + .slider:before {
-    -webkit-transform: translateX(28px);
-    -ms-transform: translateX(28px);
-    transform: translateX(28px);
-  }
-  /* Rounded sliders */
-  .slider.round {
-    border-radius: 34px;
-  }
-  .slider.round:before {
-    border-radius: 50%;
-  }
 
 .right-column {
-    /* flex: 1; Take up remaining space */
-    background-color: #e0e0e0; /* Slightly darker gray */
-    padding: 10px;
-
-    width: 75%;
+    width: 100%;
+    background-color: #1e1e1e;
+    /* padding: 10px; */
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-
-}
-.btn input{
-    background-color: transparent;
-    color: rgb(6, 72, 25);
-    padding: 12px 20px;
-    border:1px solid rgb(72, 72, 72);
-    border-radius: 4px;
-    cursor: pointer;   
 }
 
-.inner-right {   
-    height: 80px;
-    
-}
-
-@media (max-width: 280px) {
-  .inner-right p{
-      margin-top: 0;
-  }
-
-  .bottom-right{
-      padding-top: 15px;
-      margin-top: 120px;
-      
-  }
-}
-/* .bottom-right{
-  margin-top: 30px;
-} */
-.highlight{
-    font-size: 50px;
-    margin-top: 0px;
-    margin-bottom: 2%;
-    text-shadow: 0 2px 2px green;
-    color: rgb(88, 88, 88);
-}
-@media (max-width: 1024px) {
-  .highlight p {
-      margin-top: 0px;
-      /* You can add more styles here if needed */
-  }
-  .highlight {
-    margin-top: 0px;
-    /* You can add more styles here if needed */
-}
-  .inner-left img{
-    height: 100px;
-    width: 100px;
-  }
-  
-  .bottom-left{
-    border-color: transparent;
-    background-color: transparent;
-  }
-}
-@media (max-width: 932px) {
-  .highlight {
-      font-size: 25px;
-      
-  }
-}
-.navsys {   
-    background-color: #f3f3f3;
-}
-
-/*i frame*/
-
-iframe {
-  
-  width: 100%;
-  min-height: 300px;
-}
-.myframe {
-  width: 100%;
-  border: none;
-  border-radius: 0;
-  background-color: #f0f0f0;
-}
+/* Virtual PC frame */
 .default {
-  max-width: 75%;
-  margin: 5% auto 0 auto;
-  border-radius: 12px;
-  background: #e0e0e0; /* Light gray background */
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
-  overflow: hidden;
-  position: relative;
-  border: 1px solid #ccc;
-  max-height: 100%;
+    max-width: 100%;
+    width: 100%;
+    margin: 0 auto;
+    border-radius: 12px;
+    background: #e0e0e0;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+    overflow: hidden;
+    position: relative;
+    border: 1px solid #ccc;
+    max-height: 100%;
 }
 
-/* Top bar simulating macOS title bar */
+/* macOS-style title bar */
 .default::before {
-  content: '';
-  display: block;
-  height: 35px;
-  background: #333;
-  border-top-left-radius: 12px;
-  border-top-right-radius: 12px;
-  position: relative;
+    content: '';
+    display: block;
+    height: 35px;
+    background: #333;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
 }
 
-/* Circles for red, yellow, green buttons */
+/* Red / yellow / green dots */
 .default::after {
-  content: '';
-  position: absolute;
-  top: 10px;
-  left: 14px;
-  width: 36px;
-  height: 12px;
-  background: radial-gradient(circle at 6px 6px, #ff5f57 5px, transparent 6px),
-              radial-gradient(circle at 18px 6px, #ffbd2e 5px, transparent 6px),
-              radial-gradient(circle at 30px 6px, #28c840 5px, transparent 6px);
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: 14px;
+    width: 36px;
+    height: 12px;
+    background:
+        radial-gradient(circle at 6px 6px,  #ff5f57 5px, transparent 6px),
+        radial-gradient(circle at 18px 6px, #ffbd2e 5px, transparent 6px),
+        radial-gradient(circle at 30px 6px, #28c840 5px, transparent 6px);
 }
 
+/* iframe */
+iframe {
+    width: 100%;
+    min-height: 100%;
+    border: none;
+}
 
-/* Dark mode by system default. OS level operation  */
-@media (prefers-color-scheme: dark) {
-  body {
-      background-color: #121212; 
-      color: #e0e0e0; 
-  }
-  .btn input{
-    color: greenyellow;  
-    border-color: #ccc;
-  }
-  .highlight{
-    text-shadow: 0 2px 2px rgb(153, 255, 0);
-  }
-  .left-column {
-      background-color: #1e1e1e; 
-  }
+.myFrame {
+    width: 100%;
+    border: none;
+    border-radius: 0;
+    background-color: #f0f0f0;
+}
 
-  .right-column {
-      background-color: #1e1e1e; 
-  }
-
-  .bottom-left {
-      background-color: #2e2e2e; 
-  }
-
-  .navsys {
-      background-color: #1e1e1e; 
-  }
-  nav ul li button{
-    color: white;
-  }
+/* Footer */
+.myFooter {
+    padding: 10px 0;
+    text-align: center;
+    font-size: small;
+    color: #aaa;
 }

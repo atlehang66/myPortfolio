@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desktop</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+            cursor: default;
+        }
+
+        .wallpaper {
+            position: fixed;
+            inset: 0;
+            background:
+                url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1400&q=80')
+                center/cover no-repeat;
+            z-index: 0;
+        }
+
+        .wallpaper::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(160deg,rgba(0,80,160,0.18) 0%,rgba(0,40,100,0.08) 50%,rgba(0,20,60,0.25) 100%);
+        }
+
+        .desktop {
+            position: fixed;
+            inset: 0 0 40px 0;
+            z-index: 1;
+            padding: 16px 12px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, 80px);
+            grid-template-rows: repeat(auto-fill, 88px);
+            gap: 4px;
+            align-content: start;
+            justify-content: start;
+        }
+
+        .icon-item {
+            width: 76px;
+            height: 84px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 5px;
+            padding: 4px 4px 2px;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: background 0.1s;
+        }
+
+        .icon-item:hover {
+            background: rgba(49,106,197,0.35);
+            outline: 1px solid rgba(100,160,255,0.5);
+        }
+
+        .icon-item:active .icon-wrap { transform: scale(0.93); }
+
+        .icon-wrap {
+            width: 48px;
+            height: 48px;
+            position: relative;
+            transition: transform 0.1s;
+        }
+
+        .xp-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 6px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .icon-folder {
+            background: linear-gradient(160deg, #ffe77a 0%, #f0b800 40%, #c98000 100%);
+            border-radius: 0 6px 6px 6px;
+            box-shadow: inset 0 1px 0 rgba(255,255,200,0.7), inset -1px 0 0 rgba(0,0,0,0.15), 2px 3px 6px rgba(0,0,0,0.4);
+        }
+
+        .icon-folder::before {
+            content: '';
+            position: absolute;
+            top: -6px; left: 0;
+            width: 18px; height: 8px;
+            background: linear-gradient(to bottom, #ffe77a, #f0b800);
+            border-radius: 3px 3px 0 0;
+        }
+
+        .icon-folder-blue {
+            background: linear-gradient(160deg, #7ab8ff 0%, #2179d5 40%, #0b4fa8 100%);
+            box-shadow: inset 0 1px 0 rgba(180,220,255,0.7), inset -1px 0 0 rgba(0,0,0,0.2), 2px 3px 6px rgba(0,0,0,0.4);
+        }
+        .icon-folder-blue::before { background: linear-gradient(to bottom, #7ab8ff, #2179d5); }
+
+        .icon-folder-green {
+            background: linear-gradient(160deg, #7ae87a 0%, #21b521 40%, #0a6e0a 100%);
+            box-shadow: inset 0 1px 0 rgba(180,255,180,0.7), inset -1px 0 0 rgba(0,0,0,0.2), 2px 3px 6px rgba(0,0,0,0.4);
+        }
+        .icon-folder-green::before { background: linear-gradient(to bottom, #7ae87a, #21b521); }
+
+        .icon-folder-red {
+            background: linear-gradient(160deg, #ff8a7a 0%, #d52121 40%, #8a0b0b 100%);
+            box-shadow: inset 0 1px 0 rgba(255,180,180,0.7), inset -1px 0 0 rgba(0,0,0,0.2), 2px 3px 6px rgba(0,0,0,0.4);
+        }
+        .icon-folder-red::before { background: linear-gradient(to bottom, #ff8a7a, #d52121); }
+
+        .icon-pdf {
+            background: linear-gradient(160deg, #ff6b6b 0%, #cc0000 60%, #880000 100%);
+            border-radius: 4px 8px 4px 4px;
+            box-shadow: inset 0 1px 0 rgba(255,180,180,0.6), 2px 3px 6px rgba(0,0,0,0.4);
+        }
+        .icon-pdf::before {
+            content: '';
+            position: absolute;
+            top: 0; right: 0;
+            width: 10px; height: 10px;
+            background: linear-gradient(225deg, #ff6b6b 45%, #cc0000 45%);
+            border-radius: 0 8px 0 0;
+        }
+        .icon-pdf::after {
+            content: 'PDF';
+            position: absolute;
+            bottom: 6px;
+            font-size: 9px;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: 0.5px;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+        }
+
+        .icon-label {
+            font-size: 11.5px;
+            color: #fff;
+            text-align: center;
+            line-height: 1.25;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.95), 0 0 6px rgba(0,0,0,0.8), 1px 1px 0 rgba(0,0,0,0.6);
+            max-width: 74px;
+            word-break: break-word;
+        }
+
+        /* Content overlay */
+        .content-overlay {
+            position: fixed;
+            inset: 0 0 40px 0;
+            z-index: 50;
+            display: none;
+            flex-direction: column;
+            animation: winOpen 0.2s ease both;
+        }
+        .content-overlay.active { display: flex; }
+
+        @keyframes winOpen {
+            from { opacity: 0; transform: scale(0.96); }
+            to   { opacity: 1; transform: scale(1); }
+        }
+
+        .win-titlebar {
+            height: 30px;
+            background: linear-gradient(to bottom, #4a9af5 0%, #1160cc 4%, #1565d8 50%, #0f4baa 51%, #1565d8 100%);
+            display: flex;
+            align-items: center;
+            padding: 0 4px 0 8px;
+            gap: 6px;
+            flex-shrink: 0;
+            border-top: 1px solid #5ba3f8;
+        }
+
+        .win-icon-small {
+            width: 16px; height: 16px;
+            border-radius: 2px;
+            background: linear-gradient(145deg, #ffe77a, #c98000);
+            flex-shrink: 0;
+        }
+
+        .win-title-text {
+            flex: 1;
+            font-size: 12px;
+            font-weight: 700;
+            color: #fff;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+            letter-spacing: 0.2px;
+        }
+
+        .win-controls { display: flex; gap: 2px; }
+
+        .win-btn {
+            width: 21px; height: 21px;
+            border-radius: 3px;
+            border: 1px solid rgba(0,0,0,0.3);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 700;
+            color: #fff;
+            text-shadow: 0 1px 1px rgba(0,0,0,0.4);
+        }
+        .win-btn-min, .win-btn-max { background: linear-gradient(to bottom, #5cb3f8, #2472d4); }
+        .win-btn-close { background: linear-gradient(to bottom, #f87a7a, #d42424); }
+        .win-btn:hover { filter: brightness(1.2); }
+        .win-btn:active { filter: brightness(0.9); }
+
+        .content-frame-wrapper { flex: 1; overflow: hidden; background: #fff; }
+        .content-frame-wrapper iframe { width: 100%; height: 100%; border: none; }
+
+        /* Taskbar */
+        .taskbar {
+            position: fixed;
+            bottom: 0; left: 0; right: 0;
+            height: 40px;
+            background: linear-gradient(to bottom, rgba(20,40,80,0.92) 0%, rgba(10,25,60,0.97) 100%);
+            backdrop-filter: blur(12px);
+            border-top: 1px solid rgba(80,140,220,0.4);
+            display: flex;
+            align-items: center;
+            z-index: 200;
+            padding: 0 4px 0 0;
+        }
+
+        .start-btn {
+            height: 100%;
+            padding: 0 14px 0 10px;
+            background: linear-gradient(to bottom, #3fa63f 0%, #1e7e1e 50%, #166016 100%);
+            border: none;
+            border-right: 1px solid rgba(0,100,0,0.5);
+            border-radius: 0 12px 12px 0;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 13px;
+            font-weight: 700;
+            color: #fff;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+            letter-spacing: 0.3px;
+            box-shadow: inset 0 1px 0 rgba(120,220,120,0.4), 2px 0 6px rgba(0,0,0,0.3);
+            flex-shrink: 0;
+            transition: filter 0.1s;
+        }
+        .start-btn:hover { filter: brightness(1.15); }
+        .start-btn:active { filter: brightness(0.9); }
+
+        .win-logo {
+            width: 18px; height: 18px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5px;
+            flex-shrink: 0;
+        }
+        .win-logo span { border-radius: 1px; }
+        .win-logo span:nth-child(1) { background: #f25022; }
+        .win-logo span:nth-child(2) { background: #7fba00; }
+        .win-logo span:nth-child(3) { background: #00a4ef; }
+        .win-logo span:nth-child(4) { background: #ffb900; }
+
+        .taskbar-apps {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            padding: 0 6px;
+            gap: 3px;
+            overflow: hidden;
+        }
+
+        .taskbar-app {
+            height: 30px;
+            min-width: 120px;
+            max-width: 160px;
+            background: rgba(255,255,255,0.12);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 3px;
+            display: none;
+            align-items: center;
+            gap: 6px;
+            padding: 0 8px;
+            cursor: pointer;
+        }
+        .taskbar-app.active { display: flex; }
+        .taskbar-app:hover { background: rgba(255,255,255,0.2); }
+
+        .taskbar-app-icon {
+            width: 14px; height: 14px;
+            border-radius: 2px;
+            background: linear-gradient(145deg, #ffe77a, #c98000);
+            flex-shrink: 0;
+        }
+
+        .taskbar-app-label {
+            font-size: 11.5px;
+            color: rgba(255,255,255,0.9);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .tray {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 0 10px 0 8px;
+            height: 100%;
+            border-left: 1px solid rgba(80,140,220,0.25);
+        }
+
+        .tray-icon {
+            font-size: 14px;
+            opacity: 0.8;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .tray-icon:hover { opacity: 1; }
+
+        .tray-clock {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: default;
+            padding-left: 4px;
+        }
+        .tray-time { font-size: 11.5px; color: #fff; line-height: 1.2; white-space: nowrap; }
+        .tray-date { font-size: 10.5px; color: rgba(255,255,255,0.75); line-height: 1.2; white-space: nowrap; }
+
+        /* Start Menu */
+        .start-menu {
+            position: fixed;
+            bottom: 40px; left: 0;
+            width: 320px;
+            background: linear-gradient(to bottom right, #1a4a9e 0%, #1155cc 100%);
+            border: 1px solid rgba(100,160,255,0.4);
+            border-bottom: none;
+            border-radius: 8px 8px 0 0;
+            box-shadow: 3px -3px 16px rgba(0,0,0,0.6);
+            display: none;
+            flex-direction: column;
+            z-index: 300;
+            overflow: hidden;
+            animation: menuUp 0.15s ease both;
+        }
+        .start-menu.open { display: flex; }
+
+        @keyframes menuUp {
+            from { opacity: 0; transform: translateY(8px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .start-user {
+            background: linear-gradient(to bottom, #2a5fc0, #1a4aaa);
+            padding: 14px 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-bottom: 1px solid rgba(100,160,255,0.3);
+        }
+
+        .start-avatar {
+            width: 48px; height: 48px;
+            border-radius: 3px;
+            border: 2px solid rgba(255,255,255,0.5);
+            overflow: hidden;
+            flex-shrink: 0;
+            background: linear-gradient(145deg, #5b9cf6, #1a4aaa);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+        }
+        .start-avatar img { width: 100%; height: 100%; object-fit: cover; }
+
+        .start-user-name { font-size: 14px; font-weight: 700; color: #fff; text-shadow: 0 1px 2px rgba(0,0,0,0.4); }
+        .start-user-sub { font-size: 11px; color: rgba(255,255,255,0.65); margin-top: 2px; }
+
+        .start-items { display: flex; flex-direction: column; padding: 6px 0; }
+
+        .start-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 7px 16px;
+            cursor: pointer;
+            transition: background 0.1s;
+        }
+        .start-item:hover { background: rgba(255,255,255,0.15); }
+
+        .start-item-icon {
+            width: 28px; height: 28px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+
+        .start-item-label { font-size: 12.5px; color: #fff; text-shadow: 0 1px 2px rgba(0,0,0,0.3); }
+
+        .start-sep { height: 1px; background: rgba(255,255,255,0.15); margin: 4px 0; }
+
+        .start-footer {
+            background: rgba(0,0,0,0.25);
+            padding: 8px 12px;
+            display: flex;
+            justify-content: flex-end;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .start-shutdown {
+            background: linear-gradient(to bottom, #c00000, #800000);
+            border: 1px solid #400000;
+            border-radius: 3px;
+            color: #fff;
+            font-size: 11.5px;
+            padding: 4px 12px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-family: inherit;
+        }
+        .start-shutdown:hover { filter: brightness(1.2); }
+    </style>
+</head>
+<body>
+
+<div class="wallpaper"></div>
+
+<!-- Desktop icons -->
+<div class="desktop">
+    <div class="icon-item" ondblclick="openContent('contactForm.html', 'Lets Talk')">
+        <div class="icon-wrap">
+            <div class="xp-icon icon-folder icon-folder-blue"></div>
+        </div>
+        <span class="icon-label">Let's Talk</span>
+    </div>
+    <div class="icon-item" ondblclick="openContent('about.html', 'About Me')">
+        <div class="icon-wrap">
+            <div class="xp-icon icon-folder icon-folder-green"></div>
+        </div>
+        <span class="icon-label">About Me</span>
+    </div>
+    <div class="icon-item" ondblclick="openContent('screenshots.html', 'My Projects')">
+        <div class="icon-wrap">
+            <div class="xp-icon icon-folder"></div>
+        </div>
+        <span class="icon-label">My Projects</span>
+    </div>
+    <div class="icon-item" ondblclick="openContent('contact.html', 'Find Me')">
+        <div class="icon-wrap">
+            <div class="xp-icon icon-folder icon-folder-red"></div>
+        </div>
+        <span class="icon-label">Find Me</span>
+    </div>
+    <div class="icon-item" ondblclick="downloadCV()">
+        <div class="icon-wrap">
+            <div class="xp-icon icon-pdf"></div>
+        </div>
+        <span class="icon-label">Resume.pdf</span>
+    </div>
+</div>
+
+<!-- Fullscreen content window -->
+<div class="content-overlay" id="contentOverlay">
+    <div class="win-titlebar">
+        <div class="win-icon-small"></div>
+        <span class="win-title-text" id="winTitle">Window</span>
+        <div class="win-controls">
+            <div class="win-btn win-btn-min" onclick="closeContent()">&#8211;</div>
+            <div class="win-btn win-btn-max">&#9633;</div>
+            <div class="win-btn win-btn-close" onclick="closeContent()">&#10005;</div>
+        </div>
+    </div>
+    <div class="content-frame-wrapper">
+        <iframe id="contentFrame" src="" title="Content"></iframe>
+    </div>
+</div>
+
+<!-- Start Menu -->
+<div class="start-menu" id="startMenu">
+    <div class="start-user">
+        <div class="start-avatar">
+            <img src="55A346B8-7197-49F7-A4E8-19E171BCCE36.png"
+                 onerror="this.style.display='none'; this.parentElement.textContent='👤'"
+                 alt="Profile">
+        </div>
+        <div class="start-user-info">
+            <div class="start-user-name">Atlehang Semela</div>
+            <div class="start-user-sub">Full Stack Developer</div>
+        </div>
+    </div>
+    <div class="start-items">
+        <div class="start-item" onclick="openContent('about.html','About Me'); toggleStart()">
+            <div class="start-item-icon" style="background:linear-gradient(145deg,#7ae87a,#0a6e0a)">📊</div>
+            <span class="start-item-label">About Me</span>
+        </div>
+        <div class="start-item" onclick="openContent('screenshots.html','My Projects'); toggleStart()">
+            <div class="start-item-icon" style="background:linear-gradient(145deg,#ffe77a,#c98000)">💻</div>
+            <span class="start-item-label">My Projects</span>
+        </div>
+        <div class="start-item" onclick="openContent('contactForm.html','Lets Talk'); toggleStart()">
+            <div class="start-item-icon" style="background:linear-gradient(145deg,#ffe77a,#c98000)">✉️</div>
+            <span class="start-item-label">Let's Talk</span>
+        </div>
+        <div class="start-item" onclick="openContent('contact.html','Find Me'); toggleStart()">
+            <div class="start-item-icon" style="background:linear-gradient(145deg,#ffe77a,#c98000)">🔍</div>
+            <span class="start-item-label">Find Me</span>
+        </div>
+        <div class="start-sep"></div>
+        <div class="start-item" onclick="downloadCV(); toggleStart()">
+            <div class="start-item-icon" style="background:linear-gradient(145deg,#ffe77a,#c98000)">📄</div>
+            <span class="start-item-label">Download Resume</span>
+        </div>
+    </div>
+    <div class="start-footer">
+        <button class="start-shutdown" onclick="toggleStart()">&#9211; Close</button>
+    </div>
+</div>
+
+<!-- Taskbar -->
+<div class="taskbar">
+    <button class="start-btn" onclick="toggleStart()">
+        <div class="win-logo">
+            <span></span><span></span><span></span><span></span>
+        </div>
+        Start
+    </button>
+    <div class="taskbar-apps">
+        <div class="taskbar-app" id="taskbarApp">
+            <div class="taskbar-app-icon"></div>
+            <span class="taskbar-app-label" id="taskbarLabel">Window</span>
+        </div>
+    </div>
+    <div class="tray">
+        <div class="tray-icon" title="Network">🌐</div>
+        <div class="tray-icon" title="Volume">🔊</div>
+        <div class="tray-icon" title="Battery">🔋</div>
+        <div class="tray-clock">
+            <span class="tray-time" id="trayTime"></span>
+            <span class="tray-date" id="trayDate"></span>
+        </div>
+    </div>
+</div>
+
+<script>
+    function updateClock() {
+        const now = new Date();
+        document.getElementById('trayTime').textContent = now.toLocaleTimeString('en-ZA', {
+            hour: '2-digit', minute: '2-digit'
+        });
+        document.getElementById('trayDate').textContent = now.toLocaleDateString('en-ZA', {
+            day: '2-digit', month: '2-digit', year: 'numeric'
+        });
+    }
+    updateClock();
+    setInterval(updateClock, 1000);
+
+    function openContent(file, title) {
+        document.getElementById('contentFrame').src = file;
+        document.getElementById('winTitle').textContent = title;
+        document.getElementById('taskbarLabel').textContent = title;
+        document.getElementById('contentOverlay').classList.add('active');
+        document.getElementById('taskbarApp').classList.add('active');
+        closeStartMenu();
+    }
+
+    function closeContent() {
+        document.getElementById('contentOverlay').classList.remove('active');
+        document.getElementById('taskbarApp').classList.remove('active');
+        document.getElementById('contentFrame').src = '';
+    }
+
+    function toggleStart() {
+        document.getElementById('startMenu').classList.toggle('open');
+    }
+
+    function closeStartMenu() {
+        document.getElementById('startMenu').classList.remove('open');
+    }
+
+    document.addEventListener('click', (e) => {
+        const menu = document.getElementById('startMenu');
+        const btn = document.querySelector('.start-btn');
+        if (!menu.contains(e.target) && !btn.contains(e.target)) {
+            closeStartMenu();
+        }
+    });
+
+    function downloadCV() {
+        const filename = 'Atlehang Semela cv2.pdf';
+        const link = document.createElement('a');
+        link.href = filename;
+        link.download = filename;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    }
+</script>
+</body>
+</html>

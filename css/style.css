@@ -383,46 +383,6 @@ iframe {
               radial-gradient(circle at 30px 6px, #28c840 5px, transparent 6px);
 }
 
-/* .default {
-  max-width: 85%;
-  margin: auto;
-  border: 10px solid #333;
-  border-radius: 10px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-  margin-top: 5%;
-  margin-bottom: 0;
-}
-
-.pane {
-  height: 30px;
-  background: #444;
-  display: flex;
-  align-items: center;
-  padding: 0 10px;
-}
-
-.circle {
-  width: 15px;
-  height: 15px;
-  border-radius: 50%;
-  margin-right: 5px;
-  cursor: pointer;
-  color: rgb(204, 204, 204);
-  font-size: 13px;
-  justify-items: center;
-}
-
-.red {
-  background: red;
-}
-
-.yellow {
-  background: yellow;
-}
-
-.green {
-  background: green;
-} */
 
 /* Dark mode by system default. OS level operation  */
 @media (prefers-color-scheme: dark) {

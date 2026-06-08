@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+            background: #1a1a2e;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+        }
+
+        /* Animated background blobs like Win10 */
+        .bg {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            overflow: hidden;
+        }
+
+        .bg::before {
+            content: '';
+            position: absolute;
+            top: -40%;
+            left: -20%;
+            width: 80%;
+            height: 80%;
+            background: radial-gradient(ellipse, rgba(0, 120, 212, 0.35) 0%, transparent 70%);
+            animation: drift 12s ease-in-out infinite alternate;
+        }
+
+        .bg::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            right: -10%;
+            width: 70%;
+            height: 70%;
+            background: radial-gradient(ellipse, rgba(0, 180, 100, 0.2) 0%, transparent 70%);
+            animation: drift 16s ease-in-out infinite alternate-reverse;
+        }
+
+        @keyframes drift {
+            from { transform: translate(0, 0) scale(1); }
+            to   { transform: translate(5%, 8%) scale(1.1); }
+        }
+
+        /* Login card */
+        .login-container {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0;
+            animation: fadeUp 0.6s ease both;
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Profile section */
+        .profile-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            transition: opacity 0.3s ease;
+        }
+
+        .avatar-ring {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            border: 2px solid rgba(255,255,255,0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255,255,255,0.08);
+            backdrop-filter: blur(4px);
+        }
+
+        .avatar-ring svg {
+            width: 48px;
+            height: 48px;
+            fill: rgba(255,255,255,0.85);
+        }
+
+        .username {
+            font-size: 18px;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+            color: rgba(255,255,255,0.9);
+        }
+
+        /* Input + button */
+        .input-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            width: 260px;
+        }
+
+        .email-input {
+            width: 100%;
+            padding: 9px 14px;
+            background: rgba(255,255,255,0.12);
+            border: 1px solid rgba(255,255,255,0.25);
+            border-radius: 3px;
+            color: #fff;
+            font-size: 14px;
+            font-family: inherit;
+            outline: none;
+            transition: border-color 0.2s, background 0.2s;
+            backdrop-filter: blur(4px);
+        }
+
+        .email-input::placeholder {
+            color: rgba(255,255,255,0.45);
+        }
+
+        .email-input:focus {
+            border-color: rgba(255,255,255,0.7);
+            background: rgba(255,255,255,0.18);
+        }
+
+        .email-input.error {
+            border-color: #ff6b6b;
+            animation: shake 0.3s ease;
+        }
+
+        @keyframes shake {
+            0%,100% { transform: translateX(0); }
+            25%      { transform: translateX(-6px); }
+            75%      { transform: translateX(6px); }
+        }
+
+        .arrow-btn {
+            align-self: flex-end;
+            width: 34px;
+            height: 34px;
+            background: rgba(255,255,255,0.85);
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s, transform 0.15s;
+        }
+
+        .arrow-btn:hover {
+            background: #fff;
+            transform: scale(1.05);
+        }
+
+        .arrow-btn svg {
+            width: 16px;
+            height: 16px;
+            fill: #1a1a2e;
+        }
+
+        .arrow-btn.loading {
+            pointer-events: none;
+            opacity: 0.6;
+        }
+
+        /* Error message */
+        .error-msg {
+            font-size: 12px;
+            color: #ffb3b3;
+            text-align: center;
+            min-height: 16px;
+            letter-spacing: 0.2px;
+        }
+
+        /* Other user button */
+        .other-user-btn {
+            margin-top: 28px;
+            background: none;
+            border: none;
+            color: rgba(255,255,255,0.6);
+            font-size: 13px;
+            font-family: inherit;
+            cursor: pointer;
+            letter-spacing: 0.3px;
+            transition: color 0.2s;
+            padding: 4px 8px;
+        }
+
+        .other-user-btn:hover {
+            color: rgba(255,255,255,0.95);
+        }
+
+        /* Prompt tooltip */
+        .prompt-box {
+            position: absolute;
+            bottom: calc(100% + 12px);
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0,0,0,0.75);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 6px;
+            padding: 10px 14px;
+            font-size: 12px;
+            color: rgba(255,255,255,0.85);
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s;
+            z-index: 10;
+        }
+
+        .prompt-box::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 6px solid transparent;
+            border-top-color: rgba(0,0,0,0.75);
+        }
+
+        .other-user-wrapper {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .other-user-wrapper:hover .prompt-box {
+            opacity: 1;
+        }
+
+        /* Success state */
+        .success-screen {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            gap: 14px;
+            animation: fadeUp 0.5s ease both;
+        }
+
+        .success-screen.show {
+            display: flex;
+        }
+
+        .login-container.hide {
+            display: none;
+        }
+
+        .checkmark {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background: rgba(0, 200, 100, 0.2);
+            border: 2px solid rgba(0, 200, 100, 0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .checkmark svg {
+            width: 32px;
+            height: 32px;
+            stroke: #00c864;
+            stroke-width: 2.5;
+            fill: none;
+        }
+
+        .welcome-text {
+            font-size: 16px;
+            font-weight: 300;
+            color: rgba(255,255,255,0.85);
+        }
+
+        /* Bottom bar like Win10 */
+        .bottom-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 2;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding: 10px 20px;
+            gap: 16px;
+        }
+
+        .bottom-bar svg {
+            width: 18px;
+            height: 18px;
+            fill: rgba(255,255,255,0.7);
+        }
+    </style>
+</head>
+<body>
+
+<div class="bg"></div>
+
+<!-- Login UI -->
+<div class="login-container" id="loginContainer">
+    <div class="profile-section">
+        <div class="avatar-ring">
+            <!-- Person icon -->
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/>
+            </svg>
+        </div>
+        <span class="username">Other user</span>
+    </div>
+
+    <div class="input-section">
+        <input
+            class="email-input"
+            id="emailInput"
+            type="email"
+            placeholder="Email address"
+            autocomplete="off"
+            spellcheck="false"
+        />
+        <button class="arrow-btn" id="submitBtn" onclick="handleLogin()">
+            <svg viewBox="0 0 24 24"><path d="M8 5l8 7-8 7V5z"/></svg>
+        </button>
+        <span class="error-msg" id="errorMsg"></span>
+    </div>
+
+    <div class="other-user-wrapper">
+        <div class="prompt-box">Enter your email so Atlehang knows you visited!</div>
+        <button class="other-user-btn" onclick="focusEmail()">Sign in options</button>
+    </div>
+</div>
+
+<!-- Success screen -->
+<div class="success-screen" id="successScreen">
+    <div class="checkmark">
+        <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+    </div>
+    <span class="welcome-text" id="welcomeText">Welcome!</span>
+    <span style="font-size:12px; color:rgba(255,255,255,0.45);">Loading your session…</span>
+</div>
+
+<!-- Win10-style bottom bar -->
+<div class="bottom-bar">
+    <svg viewBox="0 0 24 24"><path d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9zm8 8l3 3 3-3c-1.65-1.66-4.34-1.66-6 0zm-4-4l2 2c2.76-2.76 7.24-2.76 10 0l2-2C15.14 9.14 8.87 9.14 5 13z"/></svg>
+    <svg viewBox="0 0 24 24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+</div>
+
+<!-- EmailJS -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>
+    // ─── EmailJS config ───────────────────────────────────────────────
+    // 1. Go to https://www.emailjs.com and create a free account
+    // 2. Add an Email Service (Gmail works) and note your Service ID
+    // 3. Create an Email Template with variables: {{visitor_email}}, {{login_time}}, {{user_agent}}
+    // 4. Replace the three placeholder values below
+    const EMAILJS_PUBLIC_KEY  = 'w_cdN3HoZhrkROpid';   // Account > API Keys
+    const EMAILJS_SERVICE_ID  = 'service_stx9n6a';   // Email Services
+    const EMAILJS_TEMPLATE_ID = 'template_cdr2krp';  // Email Templates
+    // ─────────────────────────────────────────────────────────────────
+
+    emailjs.init(EMAILJS_PUBLIC_KEY);
+
+    const emailInput = document.getElementById('emailInput');
+    const errorMsg   = document.getElementById('errorMsg');
+    const submitBtn  = document.getElementById('submitBtn');
+
+    // Allow Enter key to submit
+    emailInput.addEventListener('keydown', e => {
+        if (e.key === 'Enter') handleLogin();
+    });
+
+    function focusEmail() {
+        emailInput.focus();
+        emailInput.placeholder = 'Enter your email to continue';
+    }
+
+    function isValidEmail(email) {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());
+    }
+
+    async function handleLogin() {
+        const email = emailInput.value.trim();
+        errorMsg.textContent = '';
+        emailInput.classList.remove('error');
+
+        if (!email) {
+            showError('Please enter your email address.');
+            return;
+        }
+
+        if (!isValidEmail(email)) {
+            showError('Please enter a valid email address.');
+            return;
+        }
+
+        // Loading state
+        submitBtn.classList.add('loading');
+        submitBtn.innerHTML = `<svg viewBox="0 0 24 24" style="animation:spin 0.8s linear infinite"><path d="M12 2a10 10 0 1 0 10 10" fill="none" stroke="#1a1a2e" stroke-width="2.5" stroke-linecap="round"/></svg>`;
+
+        try {
+            await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+                visitor_email : email,
+                login_time    : new Date().toLocaleString('en-ZA', { timeZone: 'Africa/Johannesburg' }),
+                user_agent    : navigator.userAgent
+            });
+        } catch (err) {
+            // Silently fail — don't block the user if EmailJS isn't configured yet
+            console.warn('EmailJS not configured:', err);
+        }
+
+        showSuccess(email);
+    }
+
+    function showError(msg) {
+        errorMsg.textContent = msg;
+        emailInput.classList.add('error');
+        submitBtn.classList.remove('loading');
+        submitBtn.innerHTML = `<svg viewBox="0 0 24 24"><path d="M8 5l8 7-8 7V5z"/></svg>`;
+    }
+
+    function showSuccess(email) {
+    document.getElementById('loginContainer').classList.add('hide');
+    const s = document.getElementById('successScreen');
+    s.classList.add('show');
+    document.getElementById('welcomeText').textContent = `Welcome, ${email.split('@')[0]}!`;
+
+    setTimeout(() => {
+        window.location.href = 'desktop.html';
+    }, 1800);
+}
+</script>
+
+<style>
+    @keyframes spin {
+        to { transform: rotate(360deg); }
+    }
+</style>
+</body>
+</html>

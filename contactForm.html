@@ -1,49 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <link rel="stylesheet" href="css/contactForm.css" />
-  <title>Contact Form</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact – Atlehang Semela</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="css/contactForm.css">
 </head>
 <body>
 
-  <div class="container">
-    
-    <form action="mailto:your-email@example.com" method="POST" enctype="text/plain">
-      <div class="row">
-        <!-- Left Column -->
-        <div class="column">
-          <label for="name">Name:</label>
-          <input type="text" id="name" name="name" placeholder="Your full name" required>
+  <div class="contact-wrap">
 
-          <label for="email">Email:</label>
-          <input type="email" id="email" name="email" placeholder="you@example.com" required>
+    <!-- Left: message form -->
+    <div class="left-panel">
+      <h2>Send me a WhatsApp</h2>
 
-          <label for="inquiry">Type of Inquiry:</label>
-          <select id="inquiry" name="inquiry" required>
-            <option value="">-- Please choose an option --</option>
-            <option value="freelance">Freelance Project</option>
-            <option value="collaboration">Collaboration</option>
-            <option value="feedback">Feedback</option>
-            <option value="other">Other</option>
-          </select>
+      <div class="field">
+        <input type="text" placeholder="Name" />
+      </div>
+      <div class="field">
+        <input type="text" placeholder="Phone number" />
+      </div>
+      <div class="field">
+        <input type="text" placeholder="Subject" />
+      </div>
+      <div class="field">
+        <textarea placeholder="Message"></textarea>
+      </div>
+
+      <!-- Replace 27XXXXXXXXX with your number: country code + number, no spaces or + -->
+      <a class="send-btn" href="https://wa.me/27XXXXXXXXX" target="_blank">
+        <i class="fa-brands fa-whatsapp"></i> Send on WhatsApp
+      </a>
+    </div>
+
+    <!-- Right: contact details -->
+    <div class="right-panel">
+      <h3>Contact me</h3>
+      <p class="tagline">Open for opportunities, collaborations, or just a chat.</p>
+
+      <div class="contact-row">
+        <div class="icon-circle">
+          <i class="fa-solid fa-location-dot"></i>
         </div>
-
-        <!-- Right Column -->
-        <div class="column">
-          <label for="message">Message:</label>
-          <textarea id="message" name="message" rows="6" placeholder="Write your message..." required></textarea>
-
-          <label class="checkbox-label">
-            <input type="checkbox" id="consent" name="consent" required>
-            I consent to having my data stored for contact purposes.
-          </label>
-
-          <input type="submit" value="Send Message">
+        <div class="contact-detail">
+          <strong>Address</strong><br>
+          <span>Johannesburg, South Africa</span>
         </div>
       </div>
-    </form>
+
+      <div class="contact-row">
+        <div class="icon-circle">
+          <i class="fa-brands fa-whatsapp"></i>
+        </div>
+        <div class="contact-detail">
+          <strong>WhatsApp</strong><br>
+          <a href="https://wa.me/27XXXXXXXXX" target="_blank">+27 XXX XXX XXX</a>
+        </div>
+      </div>
+
+      <div class="contact-row">
+        <div class="icon-circle">
+          <i class="fa-solid fa-envelope"></i>
+        </div>
+        <div class="contact-detail">
+          <strong>Email</strong><br>
+          <a href="mailto:atlehangsemela@gmail.com">atlehangsemela@gmail.com</a>
+        </div>
+      </div>
+
+      <div class="contact-row">
+        <div class="icon-circle">
+          <i class="fa-brands fa-github"></i>
+        </div>
+        <div class="contact-detail">
+          <strong>GitHub</strong><br>
+          <a href="https://github.com/atlehang66" target="_blank">github.com/atlehang66</a>
+        </div>
+      </div>
+
+    </div>
   </div>
 
 </body>
